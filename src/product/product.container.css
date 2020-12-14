@@ -1,0 +1,24 @@
+.Container {
+    margin: 20px;
+}
+
+.Title {
+    font-size: 24px;
+}
+
+.Details {
+    display: flex;
+}
+
+.Image {
+    margin: 20px;
+    padding: 20px;
+    max-height: 200px;
+    border: 1px solid grey;
+}
+
+.Product-details {
+    margin: 20px;
+    padding: 20px;
+    text-align: left;
+}

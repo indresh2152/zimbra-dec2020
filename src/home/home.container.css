@@ -1,0 +1,27 @@
+.Container {
+    text-align: center;
+    margin: 10px;
+}
+
+.Categories {
+    min-width: 200px;
+}
+
+.Categories-container {
+    margin-top: 20px;
+}
+
+.Products-container {
+    display: flex;
+}
+
+.Products {
+    border: 1px solid grey;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+img {
+    max-height: 200px;
+}
