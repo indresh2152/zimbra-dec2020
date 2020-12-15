@@ -7,107 +7,70 @@ class Home extends React.Component {
         super(props);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
         this.state = {
-            products: [
-                {
-                    "id": 1,
-                    "name": "Lenovo",
-                    "imageUrl": "https://cors-anywhere.herokuapp.com/https://image.freepik.com/free-photo/notebook-sitting-floor-mockup_23-2148238657.jpg",
-                    "categoryId": 1
-                },
-                {
-                    "id": 2,
-                    "name": "Mac",
-                    "imageUrl": "https://cors-anywhere.herokuapp.com/https://image.freepik.com/free-photo/notebook-sitting-floor-mockup_23-2148238657.jpg",
-                    "categoryId": 1
-                },
-                {
-                    "id": 3,
-                    "name": "Dell",
-                    "imageUrl": "https://cors-anywhere.herokuapp.com/https://image.freepik.com/free-photo/notebook-sitting-floor-mockup_23-2148238657.jpg",
-                    "categoryId": 1
-                }
-            ]
+            areCategoriesLoaded: false,
+            areAllProductsLoaded: false,
+            categories: [],
+            allProducts: [],
+            products: [],
+            error: ""
         };
+    }
 
-        this.categories = [{
-            "id": 1,
-            "name": "Laptops"
-        }, {
-            "id": 2,
-            "name": "Mobiles"
-        }, {
-            "id": 3,
-            "name": "Speakers"
-        }];
-
-        this.allProducts = [
-            {
-                "id": 1,
-                "name": "Lenovo",
-                "imageUrl": "https://cors-anywhere.herokuapp.com/https://image.freepik.com/free-photo/notebook-sitting-floor-mockup_23-2148238657.jpg",
-                "categoryId": 1
-            },
-            {
-                "id": 2,
-                "name": "Mac",
-                "imageUrl": "https://cors-anywhere.herokuapp.com/https://image.freepik.com/free-photo/notebook-sitting-floor-mockup_23-2148238657.jpg",
-                "categoryId": 1
-            },
-            {
-                "id": 3,
-                "name": "Dell",
-                "imageUrl": "https://cors-anywhere.herokuapp.com/https://image.freepik.com/free-photo/notebook-sitting-floor-mockup_23-2148238657.jpg",
-                "categoryId": 1
-            },
-            {
-                "id": 4,
-                "name": "Apple",
-                "imageUrl": "https://image.freepik.com/free-vector/human-hand-holding-mobile-phone_74855-6532.jpg",
-                "categoryId": 2
-            },
-            {
-                "id": 5,
-                "name": "Google",
-                "imageUrl": "https://image.freepik.com/free-vector/human-hand-holding-mobile-phone_74855-6532.jpg",
-                "categoryId": 2
-            },
-            {
-                "id": 6,
-                "name": "Samsung",
-                "imageUrl": "https://image.freepik.com/free-vector/human-hand-holding-mobile-phone_74855-6532.jpg",
-                "categoryId": 2
-            },
-            {
-                "id": 7,
-                "name": "Bose",
-                "imageUrl": "https://image.freepik.com/free-vector/hand-drawn-megaphone-background_23-2148157409.jpg",
-                "categoryId": 3
-            },
-            {
-                "id": 8,
-                "name": "JBL",
-                "imageUrl": "https://image.freepik.com/free-vector/hand-drawn-megaphone-background_23-2148157409.jpg",
-                "categoryId": 3
-            },
-            {
-                "id": 9,
-                "name": "Boat",
-                "imageUrl": "https://image.freepik.com/free-vector/hand-drawn-megaphone-background_23-2148157409.jpg",
-                "categoryId": 3
-            }
-        ]
+    async componentDidMount() {
+        await fetch("/categories")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log("Categories Result ", result)
+                    this.setState({
+                        areCategoriesLoaded: true,
+                        categories: result
+                    });
+                },
+                (error) => {
+                    this.setState({
+                        areCategoriesLoaded: true,
+                        error
+                    });
+                }
+            );
+        
+        await fetch("/allProducts")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log("All products result ", result)
+                    this.setState({
+                        areAllProductsLoaded: true,
+                        allProducts: result
+                    });
+                },
+                (error) => {
+                    this.setState({
+                        areAllProductsLoaded: true,
+                        error
+                    });
+                }
+            )
+        
+        if (this.state.allProducts.length > 0 && this.state.categories.length > 0) {
+            let products = this.state.allProducts.filter(obj => obj.categoryId === this.state.categories[0].id);
+            this.setState({
+                products: products
+            })
+        }
     }
 
     handleCategoryChange(event) {
         let selectedCategory = parseInt(event.target.value, 10);
-        let filteredProducts = this.allProducts.filter(obj => obj.categoryId === selectedCategory);
+        let filteredProducts = this.state.allProducts.filter(obj => obj.categoryId === selectedCategory);
         this.setState({
             products: filteredProducts
         });
     }
 
     render() {
-        let optionItems = this.categories.map((category) =>
+        let optionItems = this.state.categories.map((category) =>
             <option key={category.id} value={category.id}>{category.name}</option>
         );
 

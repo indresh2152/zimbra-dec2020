@@ -1,0 +1,81 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Laptops"
+        },
+        {
+            "id": 2,
+            "name": "Mobiles"
+        },
+        {
+            "id": 3,
+            "name": "Speakers"
+        }
+    ],
+    "allProducts": [
+        {
+            "id": 1,
+            "name": "Lenovo",
+            "imageUrl": "https://cors-anywhere.herokuapp.com/https://image.freepik.com/free-photo/notebook-sitting-floor-mockup_23-2148238657.jpg",
+            "categoryId": 1,
+            "categoryName": "Laptops"
+        },
+        {
+            "id": 2,
+            "name": "Mac",
+            "imageUrl": "https://cors-anywhere.herokuapp.com/https://image.freepik.com/free-photo/notebook-sitting-floor-mockup_23-2148238657.jpg",
+            "categoryId": 1,
+            "categoryName": "Laptops"
+        },
+        {
+            "id": 3,
+            "name": "Dell",
+            "imageUrl": "https://cors-anywhere.herokuapp.com/https://image.freepik.com/free-photo/notebook-sitting-floor-mockup_23-2148238657.jpg",
+            "categoryId": 1,
+            "categoryName": "Laptops"
+        },
+        {
+            "id": 4,
+            "name": "Apple",
+            "imageUrl": "https://image.freepik.com/free-vector/human-hand-holding-mobile-phone_74855-6532.jpg",
+            "categoryId": 2,
+            "categoryName": "Mobiles"
+        },
+        {
+            "id": 5,
+            "name": "Google",
+            "imageUrl": "https://image.freepik.com/free-vector/human-hand-holding-mobile-phone_74855-6532.jpg",
+            "categoryId": 2,
+            "categoryName": "Mobiles"
+        },
+        {
+            "id": 6,
+            "name": "Samsung",
+            "imageUrl": "https://image.freepik.com/free-vector/human-hand-holding-mobile-phone_74855-6532.jpg",
+            "categoryId": 2,
+            "categoryName": "Mobiles"
+        },
+        {
+            "id": 7,
+            "name": "Bose",
+            "imageUrl": "https://image.freepik.com/free-vector/hand-drawn-megaphone-background_23-2148157409.jpg",
+            "categoryId": 3,
+            "categoryName": "Speakers"
+        },
+        {
+            "id": 8,
+            "name": "JBL",
+            "imageUrl": "https://image.freepik.com/free-vector/hand-drawn-megaphone-background_23-2148157409.jpg",
+            "categoryId": 3,
+            "categoryName": "Speakers"
+        },
+        {
+            "id": 9,
+            "name": "Boat",
+            "imageUrl": "https://image.freepik.com/free-vector/hand-drawn-megaphone-background_23-2148157409.jpg",
+            "categoryId": 3,
+            "categoryName": "Speakers"
+        }
+    ]
+}
